@@ -1,4 +1,4 @@
-# Bright Data recon — PayCrew
+# Bright Data recon — BillProof
 
 Run 2026-10-10 ~16:00 PT on one real vendor (Grainger). Raw responses: `recon/brightdata/*.json`. Script: `recon/smoke_bd.py`, `recon/poll_bd.py`.
 Builds on the verified endpoints in `~/Desktop/talktouser/RECON.md` (same account, zones `serp_api1`, `mcp_unlocker`, `mcp_browser`).

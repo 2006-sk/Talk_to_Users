@@ -1,4 +1,4 @@
-// PayCrew eval runner. Runs the SAME shared code that ships in the Base44 functions.
+// BillProof eval runner. Runs the SAME shared code that ships in the Base44 functions.
 //   node --experimental-strip-types --no-warnings eval/run_eval.ts web_verify|lookalike|e2e|safety|call [--record] [--offline]
 // Bright Data responses are cached in cache/bd (reused for the demo; never re-fetched in loops). --record posts EvalRun/EvalCase to Base44.
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";

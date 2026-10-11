@@ -47,7 +47,7 @@ export function IncomingCall() {
             </motion.div>
             <div className="min-w-0">
               <div className="label" style={{ color: C.calling }}>Incoming verify call</div>
-              <div className="font-bold text-lg truncate">PayCrew → {ringing.call_vars?.vendor ?? "vendor"}</div>
+              <div className="font-bold text-lg truncate">BillProof → {ringing.call_vars?.vendor ?? "vendor"}</div>
               <div className="mono text-sm text-[#8B98A9]">{ringing.number_displayed}</div>
             </div>
           </div>

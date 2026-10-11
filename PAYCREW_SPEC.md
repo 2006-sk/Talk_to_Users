@@ -1,13 +1,13 @@
-# PayCrew — Claude Code Master Build Spec
+# BillProof — Claude Code Master Build Spec
 
 > Saved verbatim-in-substance from the user's pasted spec on 2026-10-10. Source of truth for the build.
 
-**How to use:** "Build PayCrew end to end on Base44 exactly as described in PAYCREW_SPEC.md. Follow the phases in order, report at each checkpoint, and don't skip the evals."
+**How to use:** "Build BillProof end to end on Base44 exactly as described in PAYCREW_SPEC.md. Follow the phases in order, report at each checkpoint, and don't skip the evals."
 
 Claude Code is connected to **Base44** (CLI/MCP: entities, backend functions, agents, frontend code, deploy) and **Bright Data** (MCP + API). It builds everything: frontend, data model, backend crew, Base44 Agents, workflows, Vapi calls, and the eval suite. Nobody pastes anything into the Base44 builder.
 
 ## 1. Mission
-Build **PayCrew** on Base44 — an AI accounts-payable crew for small businesses and startups where one person does all the finance work. Every incoming bill is checked by a crew of agents against the company's own records **and the real web (Bright Data)**, gets a Trust Score with sources, and — if an issue is found and the web check is Low or Very low (or bank details changed) — a **Vapi** voice agent calls the vendor's **independently verified** phone number to confirm. **PayCrew never sends payments.** Humans approve.
+Build **BillProof** on Base44 — an AI accounts-payable crew for small businesses and startups where one person does all the finance work. Every incoming bill is checked by a crew of agents against the company's own records **and the real web (Bright Data)**, gets a Trust Score with sources, and — if an issue is found and the web check is Low or Very low (or bank details changed) — a **Vapi** voice agent calls the vendor's **independently verified** phone number to confirm. **BillProof never sends payments.** Humans approve.
 
 Hackathon demo shown full-screen to judges: stunning, alive, trustworthy; every number traceable to a source.
 
@@ -35,7 +35,7 @@ Reuse the design of `github.com/2006-sk/Agentforge` (parser → PO matcher → d
 - Motion: fades/slides 150–300 ms, soft pulses on live elements, numbers count up.
 - Projector-ready 1920×1080, key numbers 48–72px, high contrast.
 - Copy: sentence case. Never "fraud"/"scammer" for a vendor — "High risk — blocked for review."
-- Footer on every page: "PayCrew never sends payments. Every signal links to its source. A low score means check before paying, not an accusation."
+- Footer on every page: "BillProof never sends payments. Every signal links to its source. A low score means check before paying, not an accusation."
 
 ### 3.2 Roles
 - Owner/Approver: approve, reject, release holds, see everything.
@@ -87,10 +87,10 @@ Reuse the design of `github.com/2006-sk/Agentforge` (parser → PO matcher → d
 
 ## 4. Build phases
 - **Phase 0 Recon (20m):** BASE44_RECON.md, Bright Data datasets smoke-tested (recon/brightdata/), VAPI_RECON.md, secrets confirmed. Checkpoint 0.
-- **Phase 1 Scaffold (30m):** app "PayCrew", all entities, roles/RLS, design system + shared components (TrustGauge, ConfidencePill, RiskBadge, AgentPipeline, EvidenceRow, LookalikeDiff, CountUp, RadarSweep, ActivityTicker, Waveform, TranscriptBubble), seed 10 bills, deploy. Checkpoint 1.
+- **Phase 1 Scaffold (30m):** app "BillProof", all entities, roles/RLS, design system + shared components (TrustGauge, ConfidencePill, RiskBadge, AgentPipeline, EvidenceRow, LookalikeDiff, CountUp, RadarSweep, ActivityTicker, Waveform, TranscriptBubble), seed 10 bills, deploy. Checkpoint 1.
 - **Phase 2 Frontend (60m):** all pages; realtime (fallback poll 1.5s); demo mode + call simulation; Framer Motion; PDF highlight boxes. Checkpoint 2.
 - **Phase 3 Backend crew (90m):** intakeAgent, ledgerAgent, webVerifierAgent (findOfficialDomain, getCrunchbase, getTrustpilot, getGoogleMaps, getLinkedIn, getIndeed, getRiskNews, getOfficialContact), identityMatcherAgent, priceCheckerAgent, riskJudgeAgent (existence 25, identity 25, age 15, reputation 15, activity 10, risk_news 10; coverage = found/tried: high ≥70, medium 40–69, low 20–39, very_low <20 or identity hard-fail; hard flags → very_low; bad reviews alone never force very_low; LLM explanation citing Evidence IDs only), callAgent (Vapi), vapiWebhook, routerAgent, runCrew. Checkpoint 3.
-- **Phase 4 (30m):** Base44 Agents (PayCrew Analyst, Call Script), workflows (Invoice created → runCrew; call completed → router; blocked/needs_review → email; nightly re-verify; weekly evals), email template, structured logs, `POST /api/invoices/inbound`, MCP. Checkpoint 4: Grainqer runs fully with a real call.
+- **Phase 4 (30m):** Base44 Agents (BillProof Analyst, Call Script), workflows (Invoice created → runCrew; call completed → router; blocked/needs_review → email; nightly re-verify; weekly evals), email template, structured logs, `POST /api/invoices/inbound`, MCP. Checkpoint 4: Grainqer runs fully with a real call.
 - **Phase 5 Evals (60m)** — §5. Checkpoint 5.
 - **Phase 6 Polish (30m):** pre-warm cache, verify each demo bill 3×, empty/loading/error states, backup video, README Bright Data table.
 
@@ -105,6 +105,6 @@ Store in EvalRun/EvalCase. Cache Bright Data. Time-box 60 min.
 Output: eval/EVAL_REPORT.md, EvalRun/EvalCase records, fix + before/after if any legit bill blocked or fake approved, one-line headline.
 
 ## 6. Team notes
-- Confirm with organizers reusing PayCrew design is allowed.
+- Confirm with organizers reusing BillProof design is allowed.
 - Demo calls go to a teammate; UI shows real verified number with sources.
 - FATURA is synthetic; SROIE/CORD are receipts. Lead pitch with our own scenario evals.

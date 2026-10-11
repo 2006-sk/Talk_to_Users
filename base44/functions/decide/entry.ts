@@ -1,4 +1,4 @@
-// decide — human decisions with role checks. PayCrew never pays: "approve" only marks the bill ready for a human to pay in their bank.
+// decide — human decisions with role checks. BillProof never pays: "approve" only marks the bill ready for a human to pay in their bank.
 // Input: { invoice_id, action: approve|hold|block|reject|release|request_call, reason?, demo_role? }
 // Roles: owner (everything) · bookkeeper (hold, request_call, approve ≤ threshold & not high risk; can't release a block) · viewer (nothing).
 import { createClientFromRequest } from "npm:@base44/sdk";

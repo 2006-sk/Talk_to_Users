@@ -18,7 +18,7 @@ const CREW = [
   { k: "Price", d: "Line items vs Amazon market prices", icon: Tag, web: true },
   { k: "Risk Judge", d: "Trust Score with every signal linked to its source", icon: Scale },
   { k: "Call", d: "Calls the vendor's verified number — never the one on the bill", icon: Phone, call: true },
-  { k: "Router", d: "Approve, review or block — humans pay, PayCrew never does", icon: RouteIcon },
+  { k: "Router", d: "Approve, review or block — humans pay, BillProof never does", icon: RouteIcon },
 ];
 
 const SAMPLES = [
@@ -75,7 +75,7 @@ export default function Landing() {
       <div className="absolute inset-x-0 top-0 h-[520px] pointer-events-none" style={{ background: "radial-gradient(60% 60% at 50% 0%, rgba(16,185,129,.16), transparent 70%)" }} />
       <header className="relative max-w-[1400px] mx-auto px-8 py-6 flex items-center gap-3">
         <div className="h-10 w-10 rounded-xl bg-[#10B981]/15 ring-1 ring-[#10B981]/50 flex items-center justify-center"><ShieldCheck className="h-5 w-5 text-[#10B981]" /></div>
-        <span className="font-extrabold text-xl tracking-tight">PayCrew</span>
+        <span className="font-extrabold text-xl tracking-tight">BillProof</span>
         <div className="flex-1" />
         <Link to="/evals" className="text-sm text-[#8B98A9] hover:text-white px-3">Evals</Link>
         <Link to="/mission" className="text-sm font-semibold rounded-xl px-4 py-2 raised hover:border-[#22D3EE]/60">Mission Control</Link>
@@ -91,7 +91,7 @@ export default function Landing() {
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.3 }} className="mt-6 text-lg md:text-xl text-[#8B98A9] max-w-3xl mx-auto">
             Eight agents check each bill against your records and the real web, give it a Trust Score where every signal links to its source,
-            and call the vendor's <span className="text-white">independently verified</span> number when something looks wrong. Humans approve. PayCrew never sends payments.
+            and call the vendor's <span className="text-white">independently verified</span> number when something looks wrong. Humans approve. BillProof never sends payments.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.3 }} className="mt-10 flex flex-wrap justify-center gap-4">
             <Link to="/mission" className="group flex items-center gap-3 rounded-2xl px-8 py-4 text-lg font-bold text-[#070A0F] bg-[#10B981] hover:bg-[#34D399] transition-colors shadow-[0_0_40px_rgba(16,185,129,.4)]">
@@ -137,7 +137,7 @@ export default function Landing() {
           {[
             ["Grounded", "Every number on screen is an evidence row with a source link and fetch time. Missing means “Not found” — nothing is invented."],
             ["Safe calls", "The voice agent says it's automated, mentions only the last 4 digits, and never accepts bank changes by phone."],
-            ["Human in charge", "Above-threshold or high-risk bills need the owner. PayCrew marks bills ready to pay — it never pays."],
+            ["Human in charge", "Above-threshold or high-risk bills need the owner. BillProof marks bills ready to pay — it never pays."],
           ].map(([t, d]) => (
             <div key={t} className="panel p-6"><div className="font-bold text-lg">{t}</div><div className="text-sm text-[#8B98A9] mt-2">{d}</div></div>
           ))}

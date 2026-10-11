@@ -30,12 +30,12 @@ export default async function (req: Request): Promise<Response> {
         const last = msgs[msgs.length - 1];
         if (last && last.role === role && !last.final_from_conversation && Date.now() - Date.parse(last.at ?? 0) < 4000) last.text = `${last.text} ${m.transcript}`.trim();
         else msgs.push({ role, text: m.transcript, at: new Date().toISOString() });
-        await db.VerifyCall.update(vc.id, { messages: msgs, live_partial: null, status: "in_progress", transcript: msgs.map((x: any) => `${x.role === "assistant" ? "PayCrew AI" : "Vendor"}: ${x.text}`).join("\n") });
+        await db.VerifyCall.update(vc.id, { messages: msgs, live_partial: null, status: "in_progress", transcript: msgs.map((x: any) => `${x.role === "assistant" ? "BillProof AI" : "Vendor"}: ${x.text}`).join("\n") });
       }
     } else if (m.type === "conversation-update") {
       // authoritative running conversation from Vapi
       const msgs = (m.messages ?? m.conversation ?? []).filter((x: any) => ["assistant", "bot", "user"].includes(x.role)).map((x: any) => ({ role: x.role === "bot" ? "assistant" : x.role, text: x.message ?? x.content ?? "", at: x.time ? new Date(x.time).toISOString() : new Date().toISOString(), final_from_conversation: true }));
-      if (msgs.length >= (vc.messages ?? []).length) await db.VerifyCall.update(vc.id, { messages: msgs, transcript: msgs.map((x: any) => `${x.role === "assistant" ? "PayCrew AI" : "Vendor"}: ${x.text}`).join("\n") });
+      if (msgs.length >= (vc.messages ?? []).length) await db.VerifyCall.update(vc.id, { messages: msgs, transcript: msgs.map((x: any) => `${x.role === "assistant" ? "BillProof AI" : "Vendor"}: ${x.text}`).join("\n") });
     } else if (m.type === "end-of-call-report") {
       const sd = m.analysis?.structuredData ?? {};
       if (m.artifact?.messages?.length) {

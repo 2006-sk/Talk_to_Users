@@ -3,9 +3,9 @@
 Sources: docs.base44.com `.md` pages, fetched 2026-10-10. Quotes are verbatim. Anything the docs do not state is marked **UNCONFIRMED**.
 Verified local code: `/Users/apple/Desktop/talktouser/base44/` (talktouser deployed with the CLI from a local project).
 
-## 0. Panel → capability → how PayCrew uses it → fallback
+## 0. Panel → capability → how BillProof uses it → fallback
 
-| Panel | Capability | How PayCrew uses it | Fallback |
+| Panel | Capability | How BillProof uses it | Fallback |
 |---|---|---|---|
 | Data | Entities (`base44/entities/*.jsonc`, JSON Schema + `rls`) | Company, Vendor, Invoice, AgentRun, Evidence, VerifyCall, Payment, AuditLog, EvalRun, EvalCase. Every row has `company_id`. RLS checks `{{user.data.company_id}}`. | `query_entities`/`create_entities` MCP tools; `asServiceRole` in functions |
 | Data | Built-in User entity + custom fields (`User.jsonc`) | Add `company_id` and `app_role` (`owner`/`bookkeeper`/`viewer`). The built-in `role` field only holds `admin`/`user`. | Keep the role checks inside backend functions |
@@ -56,7 +56,7 @@ Top level: `name`, `type: "object"` (required), `title`, `description`, `propert
 - Operators: `$or`, `$and`, `$nor`. `$in`, `$nin`, `$ne`, `$all` work on `data.*` fields only.
 - Denied list/filter returns empty. Denied `get()` returns 404. Denied create/update throws 403. `asServiceRole` "bypasses both RLS and FLS entirely".
 
-PayCrew example `base44/entities/invoice.jsonc`:
+BillProof example `base44/entities/invoice.jsonc`:
 ```jsonc
 {
   "name": "Invoice", "type": "object", "title": "Invoice",
@@ -192,14 +192,14 @@ await base44.auth.inviteUser("a@b.com", "user");
 {
   "name": "paycrew_analyst",                 // lowercase+underscores, matches filename
   "description": "Answers AP questions about invoices, vendors and crew runs",
-  "instructions": "You are PayCrew Analyst... cite Evidence ids...",
+  "instructions": "You are BillProof Analyst... cite Evidence ids...",
   "model": "automatic",                      // dev docs: required; sandbox skill lists only name/description/instructions as required
   "tool_configs": [
     { "entity_name": "Invoice",  "allowed_operations": ["read"] },
     { "entity_name": "Evidence", "allowed_operations": ["read"] },
     { "function_name": "runCrew", "description": "Re-run the AP crew on one invoice (invoice_id)" }
   ],
-  "whatsapp_greeting": "Hi, I'm PayCrew.",   // optional
+  "whatsapp_greeting": "Hi, I'm BillProof.",   // optional
   "selected_skill_names": []                 // optional, <=10, names of base44/agent-skills/*.md
 }
 ```
@@ -217,7 +217,7 @@ Tool-call data in the subscription is truncated (`arguments_string` 500 chars, `
 
 ## 7. Automations vs workflows
 
-**Version check first:** "Workflows replaces automations. Apps created from July 6, 2026 use workflows ... Your app has one or the other, not both." "If your app has workflows enabled, deploying a `function.jsonc` that contains automations fails with HTTP 409." In sandbox mode `function.jsonc` "is ignored". A new PayCrew app therefore needs **Workflows**.
+**Version check first:** "Workflows replaces automations. Apps created from July 6, 2026 use workflows ... Your app has one or the other, not both." "If your app has workflows enabled, deploying a `function.jsonc` that contains automations fails with HTTP 409." In sandbox mode `function.jsonc` "is ignored". A new BillProof app therefore needs **Workflows**.
 
 **A. Legacy `function.jsonc` automations** (older apps or a local CLI project; verified in `talktouser/base44/functions/recrawlAll/function.jsonc`):
 ```jsonc
@@ -266,7 +266,7 @@ Tool-call data in the subscription is truncated (`arguments_string` 500 chars, `
   - `base44 functions deploy [names...]` (`--force` prunes).
   - `base44 site deploy` (needs `site.outputDirectory`).
   - `base44 visibility <public|private|workspace>`.
-- **Cloud sandbox (PayCrew's situation, edited via MCP):**
+- **Cloud sandbox (BillProof's situation, edited via MCP):**
   - "Structured resources sync the same way. ... In the sandbox, creating `base44/functions/send-email/entry.ts` is all it takes to add that function."
   - "writing a resource file into the sandbox is what ships it (backend functions, realtime actors, entities, and agents all auto-sync from the file you write)".
   - "Edits to entities, agents, workflows, backend functions, and page routing are synced into Base44 automatically after the commit."

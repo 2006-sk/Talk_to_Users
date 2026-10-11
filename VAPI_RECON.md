@@ -1,10 +1,10 @@
-# Vapi recon — PayCrew verify calls
+# Vapi recon — BillProof verify calls
 
 Source: docs.vapi.ai (api-reference/calls/create, server-url/events, server-url/server-authentication, assistants/call-analysis), read 2026-10-10. Account checked with the private key (never logged).
 
 ## Account
 - Phone number: `VAPI_PHONE_NUMBER_ID` = f7ce3c0f-… (Twilio, +1 866 812 1619). ✅
-- Existing assistants belong to other projects → we create a dedicated **"PayCrew Verify"** assistant via `POST https://api.vapi.ai/assistant` and store its id as `VAPI_ASSISTANT_ID`.
+- Existing assistants belong to other projects → we create a dedicated **"BillProof Verify"** assistant via `POST https://api.vapi.ai/assistant` and store its id as `VAPI_ASSISTANT_ID`.
 - `DEMO_CALLEE_NUMBER` = teammate (+1 408 …). Demo dials it; UI shows the vendor's verified official number with sources.
 
 ## Outbound call

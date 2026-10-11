@@ -69,7 +69,7 @@ export async function startCall(base44: any, inv: any, attempt: number, env: { v
     await db.Invoice.update(inv.id, { status: "needs_review", decision: "needs_review", decision_reason: "No independently verified phone number." });
     return { ok: false, reason: "no verified number" };
   }
-  // channel: "web" (browser call on the PayCrew site — default), "phone" (Vapi outbound), or scripted simulation
+  // channel: "web" (browser call on the BillProof site — default), "phone" (Vapi outbound), or scripted simulation
   const channel: "web" | "phone" | "simulation" = company?.call_simulation === true ? "simulation" : (company?.call_channel ?? "web") === "phone" && env.vapiKey && env.phoneId && env.assistantId ? "phone" : "web";
   const simulated = channel === "simulation";
   const demo = company?.demo_mode !== false;
@@ -87,7 +87,7 @@ export async function startCall(base44: any, inv: any, attempt: number, env: { v
   });
   await db.Invoice.update(inv.id, { status: "calling", call_attempts: attempt });
   await auditLog(db, inv.company_id, inv.id, "call_agent", "call_started", `${channel === "web" ? "Browser call" : channel === "phone" ? "Calling" : "Simulated call"} to ${vars.vendor} at ${shown}${demo ? " (demo line)" : ` (from ${sources.join(" + ") || "verified sources"}) — not the number on the bill`}`);
-  // browser call: the PayCrew site shows an incoming-call card and starts the Vapi web call; results come back via callEvent
+  // browser call: the BillProof site shows an incoming-call card and starts the Vapi web call; results come back via callEvent
   if (channel === "web") return { ok: true, web: true, vc };
   if (simulated) return { ok: true, simulated: true, vc, run: () => simulate(base44, inv, vc.id, personaFor(inv), vars) };
 
@@ -125,7 +125,7 @@ async function simulate(base44: any, inv: any, vcId: string, p: Persona, vars: a
   for (const l of lines) {
     await sleep(Math.min(4200, 900 + l.text.length * 28));
     msgs.push({ role: l.role, text: l.text, at: new Date().toISOString() });
-    await db.VerifyCall.update(vcId, { messages: msgs, transcript: msgs.map((m) => `${m.role === "assistant" ? "PayCrew AI" : "Vendor"}: ${m.text}`).join("\n") });
+    await db.VerifyCall.update(vcId, { messages: msgs, transcript: msgs.map((m) => `${m.role === "assistant" ? "BillProof AI" : "Vendor"}: ${m.text}`).join("\n") });
   }
   await sleep(800);
   return finalize(base44, vcId, OUTCOME[p], { summary: SUMMARY[p], disclosed_ai: true, status: p === "voicemail" ? "voicemail" : "completed" });

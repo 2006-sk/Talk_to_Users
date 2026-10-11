@@ -1,4 +1,4 @@
-// PayCrew core rules — pure, deterministic, no I/O.
+// BillProof core rules — pure, deterministic, no I/O.
 // Imported by Base44 backend functions (Deno) and by the local eval runner (node --experimental-strip-types).
 // Anything that decides a score, a band, a call or a status lives here so evals test exactly what ships.
 
@@ -208,7 +208,7 @@ export function detectInjection(text?: string | null): string[] {
   return hits;
 }
 
-// ---------------------------------------------------------------- regex fallback parser (ported from PayCrew rules.py)
+// ---------------------------------------------------------------- regex fallback parser (ported from BillProof rules.py)
 
 export function parseInvoiceRules(text: string) {
   const g = (re: RegExp) => text.match(re)?.[1]?.trim() ?? null;

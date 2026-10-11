@@ -45,7 +45,7 @@ function ensure() {
     send({ verify_call_id: c.vcId, type: "ended", vapi_call_id: c.vapiCallId });
   };
   vapi.on("call-end", end);
-  vapi.on("error", (e) => { console.error("[PayCrew] vapi error", e); end(); });
+  vapi.on("error", (e) => { console.error("[BillProof] vapi error", e); end(); });
   return vapi;
 }
 
@@ -65,7 +65,7 @@ export async function answer(vc) {
     current.vapiCallId = call.id;
     await send({ verify_call_id: vc.id, type: "started", vapi_call_id: call.id });
   } catch (e) {
-    console.error("[PayCrew] call start failed", e);
+    console.error("[BillProof] call start failed", e);
     current = null; emit();
     await send({ verify_call_id: vc.id, type: "declined" });
     throw e;

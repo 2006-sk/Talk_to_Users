@@ -1,4 +1,4 @@
-// PayCrew crew — the per-bill agent sequence (§3.5), storage-agnostic.
+// BillProof crew — the per-bill agent sequence (§3.5), storage-agnostic.
 // intake → (ledger ‖ web_verifier ‖ price_checker) → identity_matcher → risk_judge → call_agent (decision only) → router
 // The Base44 function binds `Store` to entities; the eval runner binds it to memory. Same code, same decisions.
 import { BrightData } from "./bd.ts";

@@ -113,7 +113,7 @@ export default function VerifyCallPage() {
               {call.live_partial?.text && !call.outcome && (
                 <div className={`flex ${call.live_partial.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className="max-w-[75%] rounded-2xl px-4 py-2.5 text-[15px] italic text-[#8B98A9] border border-dashed border-[#334155]">
-                    <div className="label mb-1">{call.live_partial.role === "user" ? "Vendor" : "PayCrew AI"} · speaking…</div>{call.live_partial.text}
+                    <div className="label mb-1">{call.live_partial.role === "user" ? "Vendor" : "BillProof AI"} · speaking…</div>{call.live_partial.text}
                   </div>
                 </div>
               )}

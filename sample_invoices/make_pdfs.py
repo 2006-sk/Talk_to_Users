@@ -1,4 +1,4 @@
-# Generates realistic sample invoice PDFs for the 10 PayCrew demo scenarios (upload them via "Upload bills").
+# Generates realistic sample invoice PDFs for the 10 BillProof demo scenarios (upload them via "Upload bills").
 # Real-vendor samples carry a footer saying they are demo samples, not issued by that company; impostors are marked fictional.
 import json, os, sys
 from reportlab.lib.pagesizes import letter
@@ -15,7 +15,7 @@ ADDR = {
 }
 FICTIONAL = {"Grainqer Industrial Supply", "Northbridge Facility Partners"}
 ACCENT = {"Staples": "#CC0000", "Atlassian": "#0052CC", "Uline": "#1F4E9C", "Grainger": "#C8102E", "Grainqer Industrial Supply": "#B5121B", "CDW": "#D0021B", "Bay Area Janitorial Service": "#2E7D32", "Northbridge Facility Partners": "#37474F"}
-TITLE = {  # 4 upload samples, named by what PayCrew should do with them
+TITLE = {  # 4 upload samples, named by what BillProof should do with them
   "clean_office": "1-CLEAN-Staples-should-approve",
   "price_padding": "2-PRICE-Uline-3.5x-market-needs-review",
   "hacked_mailbox": "3-BANK-CHANGED-Grainger-calls-then-blocks",
@@ -74,7 +74,7 @@ def make(b):
         c.setFillColor(HexColor("#111111"))
     c.setFont("Helvetica", 9); c.setFillColor(HexColor("#666666")); c.drawString(50, 90, "Thank you for your business. Questions about this invoice? Contact accounts receivable.")
     c.setFont("Helvetica-Oblique", 7.5); c.setFillColor(HexColor("#9CA3AF"))
-    note = f"FICTIONAL company — sample document for the PayCrew demo." if v in FICTIONAL else f"Sample invoice for the PayCrew demo — not issued by {v}."
+    note = f"FICTIONAL company — sample document for the BillProof demo." if v in FICTIONAL else f"Sample invoice for the BillProof demo — not issued by {v}."
     c.drawString(50, 40, note)
     c.showPage(); c.save()
     return path

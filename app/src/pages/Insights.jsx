@@ -155,7 +155,7 @@ export function SettingsPage() {
         <Toggle k="always_call_on_bank_change" label="Always call when bank details change" hint="Even if the vendor checks out on the web — mailbox takeovers come from the vendor's real domain." />
         <label className="block raised p-4">
           <div className="font-semibold">Verify call channel</div>
-          <div className="text-sm text-[#8B98A9] mb-2">Browser: the call rings inside PayCrew and you answer as the vendor (Vapi web call). Phone: Vapi dials out through your Vapi phone number.</div>
+          <div className="text-sm text-[#8B98A9] mb-2">Browser: the call rings inside BillProof and you answer as the vendor (Vapi web call). Phone: Vapi dials out through your Vapi phone number.</div>
           <select value={f.call_channel ?? "web"} onChange={(e) => setF({ ...f, call_channel: e.target.value })} disabled={role !== "owner"} className="rounded-xl bg-[#070A0F] border border-[#1E2A38] px-3 py-2">
             <option value="web">Browser call (Vapi web)</option><option value="phone">Phone call (Vapi + Twilio number)</option>
           </select>

@@ -139,7 +139,7 @@ export function Shell({ children }) {
       <aside className="w-[232px] shrink-0 border-r border-[#1E2A38] bg-[#0A0F16] flex flex-col sticky top-0 h-screen">
         <NavLink to="/" className="px-5 py-5 flex items-center gap-2.5">
           <div className="h-9 w-9 rounded-xl bg-[#10B981]/15 ring-1 ring-[#10B981]/50 flex items-center justify-center"><ShieldCheck className="h-5 w-5 text-[#10B981]" /></div>
-          <div><div className="font-extrabold text-lg tracking-tight">PayCrew</div><div className="text-[11px] text-[#8B98A9] -mt-0.5">AP crew · checks every bill</div></div>
+          <div><div className="font-extrabold text-lg tracking-tight">BillProof</div><div className="text-[11px] text-[#8B98A9] -mt-0.5">AP crew · checks every bill</div></div>
         </NavLink>
         <nav className="px-3 space-y-1 flex-1">
           {NAV.map(({ to, label, icon: Icon, end }) => (
@@ -150,7 +150,7 @@ export function Shell({ children }) {
         </nav>
         <div className="m-3 p-3 raised text-[11px] text-[#8B98A9] leading-relaxed">
           <div className="font-semibold text-[#E6EDF3] mb-1">Never pays</div>
-          PayCrew only marks bills ready for a human to pay in your bank.
+          BillProof only marks bills ready for a human to pay in your bank.
         </div>
       </aside>
       <IncomingCall />

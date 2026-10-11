@@ -6,7 +6,7 @@ import { secrets } from "base44:runtime";
 import { finalize, finalizeFromVapi } from "../../shared/calls.ts";
 import { auditLog, rdb } from "../../shared/b44.ts";
 
-const line = (m: any) => `${m.role === "assistant" ? "PayCrew AI" : "Vendor"}: ${m.text}`;
+const line = (m: any) => `${m.role === "assistant" ? "BillProof AI" : "Vendor"}: ${m.text}`;
 
 export default async function (req: Request): Promise<Response> {
   try {

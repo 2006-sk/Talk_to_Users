@@ -1,4 +1,4 @@
-// PayCrew design-system components (§Phase 1).
+// BillProof design-system components (§Phase 1).
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 import { ExternalLink, Check, X, Minus, Loader2 } from "lucide-react";
@@ -232,7 +232,7 @@ export function TranscriptBubble({ role, text }) {
     <motion.div {...fade} className={`flex ${ai ? "justify-start" : "justify-end"}`}>
       <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${ai ? "rounded-bl-sm" : "rounded-br-sm"}`}
         style={ai ? { background: `${C.calling}1F`, border: `1px solid ${C.calling}55` } : { background: C.raised, border: `1px solid ${C.border}` }}>
-        <div className="label mb-1" style={{ color: ai ? C.calling : C.muted }}>{ai ? "PayCrew AI" : "Vendor"}</div>
+        <div className="label mb-1" style={{ color: ai ? C.calling : C.muted }}>{ai ? "BillProof AI" : "Vendor"}</div>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </motion.div>

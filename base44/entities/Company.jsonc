@@ -42,13 +42,13 @@
         "phone"
       ],
       "default": "web",
-      "description": "web = browser call on the PayCrew site; phone = Vapi outbound call"
+      "description": "web = browser call on the BillProof site; phone = Vapi outbound call"
     }
   },
   "required": [
     "name"
   ],
-  "description": "A business using PayCrew. All other records carry company_id.",
+  "description": "A business using BillProof. All other records carry company_id.",
   "rls": {
     "read": {
       "$or": [

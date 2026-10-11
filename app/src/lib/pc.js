@@ -1,4 +1,4 @@
-// PayCrew shared frontend helpers: tokens, formatters, live entity hooks.
+// BillProof shared frontend helpers: tokens, formatters, live entity hooks.
 import { useEffect, useRef, useState, useCallback } from "react";
 import { base44 } from "@/api/base44Client";
 
@@ -109,4 +109,4 @@ export async function audit(company_id, invoice_id, actor, action, detail) {
   try { await base44.entities.AuditLog.create({ company_id, invoice_id, actor, action, detail }); } catch { /* non-blocking */ }
 }
 
-export const FOOTER = "PayCrew never sends payments. Every signal links to its source. A low score means check before paying, not an accusation.";
+export const FOOTER = "BillProof never sends payments. Every signal links to its source. A low score means check before paying, not an accusation.";

@@ -25,7 +25,7 @@
   "required": [
     "invoice_id"
   ],
-  "description": "Payment READINESS only. PayCrew never executes payments; there is no 'sent' status.",
+  "description": "Payment READINESS only. BillProof never executes payments; there is no 'sent' status.",
   "rls": {
     "read": {
       "$or": [
