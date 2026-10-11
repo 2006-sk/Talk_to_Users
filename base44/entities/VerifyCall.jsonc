@@ -1,0 +1,132 @@
+{
+  "name": "VerifyCall",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "invoice_id": {
+      "type": "string"
+    },
+    "vendor_id": {
+      "type": "string"
+    },
+    "number_called": {
+      "type": "string",
+      "description": "the dialed number (demo: teammate)"
+    },
+    "number_displayed": {
+      "type": "string",
+      "description": "vendor's verified official number shown in UI"
+    },
+    "number_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "vapi_call_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "ringing",
+        "in_progress",
+        "completed",
+        "no_answer",
+        "voicemail",
+        "failed"
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "denied",
+        "unsure",
+        "no_answer"
+      ]
+    },
+    "transcript": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "recording_url": {
+      "type": "string"
+    },
+    "disclosed_ai": {
+      "type": "boolean"
+    },
+    "simulated": {
+      "type": "boolean",
+      "default": false
+    },
+    "attempt": {
+      "type": "number",
+      "default": 1
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration_sec": {
+      "type": "number"
+    },
+    "live_partial": {
+      "type": "object",
+      "description": "in-progress utterance {role, text, at} from Vapi partial transcripts"
+    },
+    "ended_reason": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "web",
+        "phone",
+        "simulation"
+      ],
+      "default": "web"
+    },
+    "call_vars": {
+      "type": "object",
+      "description": "variables for the Vapi assistant {company, vendor, inv, amount, last4, sender}"
+    },
+    "verified_number": {
+      "type": "string",
+      "description": "vendor's independently verified number (from official sources)"
+    }
+  },
+  "required": [
+    "invoice_id"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "data.company_id": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

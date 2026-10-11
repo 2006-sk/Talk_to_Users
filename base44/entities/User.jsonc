@@ -1,0 +1,19 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Company.key this user belongs to"
+    },
+    "app_role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "bookkeeper",
+        "viewer"
+      ],
+      "default": "viewer"
+    }
+  }
+}

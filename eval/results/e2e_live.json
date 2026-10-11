@@ -1,0 +1,69 @@
+[
+ {
+  "pdf": "1-CLEAN-Staples-should-approve.pdf",
+  "expected": {
+   "status": "approved",
+   "call": false
+  },
+  "result": {
+   "invoice_id": "6acaefa7e5b1e3828f67075f",
+   "ok": true,
+   "status": "approved",
+   "decision": "approve",
+   "call": false,
+   "ms": 8857
+  },
+  "secs": 11.1
+ },
+ {
+  "pdf": "2-PRICE-Uline-3.5x-market-needs-review.pdf",
+  "expected": {
+   "status": "needs_review",
+   "call": false,
+   "issue": "price"
+  },
+  "result": {
+   "invoice_id": "6acaefa789275f25bc6a5f9b",
+   "ok": true,
+   "status": "needs_review",
+   "decision": "needs_review",
+   "call": false,
+   "ms": 142510
+  },
+  "secs": 144.7
+ },
+ {
+  "pdf": "3-BANK-CHANGED-Grainger-calls-then-blocks.pdf",
+  "expected": {
+   "status": "calling",
+   "call": true,
+   "issue": "bank_changed"
+  },
+  "result": {
+   "invoice_id": "6acaefb29cbe5a3a5c003326",
+   "ok": true,
+   "status": "needs_call",
+   "decision": "verify_call",
+   "call": true,
+   "ms": 8239
+  },
+  "secs": 11.7
+ },
+ {
+  "pdf": "4-IMPOSTOR-Grainqer-FICTIONAL-calls-then-blocks.pdf",
+  "expected": {
+   "status": "calling",
+   "call": true,
+   "issue": "lookalike_domain"
+  },
+  "result": {
+   "invoice_id": "6acaefbeeb416483fae6d311",
+   "ok": true,
+   "status": "needs_call",
+   "decision": "verify_call",
+   "call": true,
+   "ms": 8220
+  },
+  "secs": 11.7
+ }
+]

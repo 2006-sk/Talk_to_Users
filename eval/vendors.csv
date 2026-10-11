@@ -1,0 +1,41 @@
+name,city,state,invoice_email,official_domain,alternate_domains,group,expected_band,notes
+Grainger,Lake Forest,IL,invoices@grainger.com,grainger.com,,big_real,green,MRO distributor; Trustpilot 1.5 (tricky reputation)
+Staples,Framingham,MA,ar-invoices@staples.com,staples.com,,big_real,green,office supplies
+Uline,Pleasant Prairie,WI,invoices@uline.com,uline.com,,big_real,green,shipping supplies
+CDW,Vernon Hills,IL,invoices@cdw.com,cdw.com,,big_real,green,IT reseller
+Fastenal,Winona,MN,ar@fastenal.com,fastenal.com,,big_real,green,industrial supplies
+McMaster-Carr,Elmhurst,IL,billing@mcmaster.com,mcmaster.com,,big_real,green,industrial supplies
+Office Depot,Boca Raton,FL,billing@officedepot.com,officedepot.com,,big_real,green,office supplies
+Atlassian,San Francisco,CA,billing@atlassian.com,atlassian.com,,big_real,green,SaaS
+Zoom,San Jose,CA,billing@zoom.us,zoom.us,zoom.com,big_real,green,SaaS; .us primary domain
+Dropbox,San Francisco,CA,billing@dropbox.com,dropbox.com,,big_real,green,SaaS
+Salesforce,San Francisco,CA,billing@salesforce.com,salesforce.com,,big_real,green,SaaS
+Cintas,Mason,OH,ar@cintas.com,cintas.com,,big_real,green,uniforms and facility services
+FedEx,Memphis,TN,billing@fedex.com,fedex.com,,big_real,green,shipping
+The Home Depot,Atlanta,GA,ar@homedepot.com,homedepot.com,,big_real,green,building supplies
+Dell Technologies,Round Rock,TX,billing@dell.com,dell.com,,big_real,green,hardware
+Bay Area Janitorial Service,San Jose,CA,office@thebayareajanitorial.com,thebayareajanitorial.com,,small_real,amber,local cleaning company
+Tartine Bakery,San Francisco,CA,orders@tartinebakery.com,tartinebakery.com,,small_real,amber,local bakery (catering vendor)
+Reem's California,Oakland,CA,catering@reemscalifornia.com,reemscalifornia.com,,small_real,amber,local restaurant (catering vendor)
+Ritual Coffee Roasters,San Francisco,CA,wholesale@ritualcoffee.com,ritualcoffee.com,,small_real,amber,local coffee roaster (office coffee)
+Sightglass Coffee,San Francisco,CA,wholesale@sightglasscoffee.com,sightglasscoffee.com,,small_real,amber,local coffee roaster
+Main Street Launch,Oakland,CA,info@mainstreetlaunch.org,mainstreetlaunch.org,,small_real,amber,local nonprofit lender (service vendor)
+Pacific Community Ventures,Oakland,CA,info@pacificcommunityventures.org,pacificcommunityventures.org,,small_real,amber,local CDFI
+Working Solutions,San Francisco,CA,info@workingsolutions.org,workingsolutions.org,,small_real,amber,local CDFI
+Comcast Business,Philadelphia,PA,billing@comcast.com,comcast.com,comcastbusiness.com;xfinity.com,tricky_real,green,poor Trustpilot rating; bills from brand domains
+Wayfair,Boston,MA,billing@wayfair.com,wayfair.com,,tricky_real,green,poor Trustpilot rating
+AT&T,Dallas,TX,billing@att.com,att.com,,tricky_real,green,poor Trustpilot rating
+Acme Tools,Grand Forks,ND,orders@acmetools.com,acmetools.com,,tricky_real,amber,common-name collision (Acme)
+Meta Platforms,Menlo Park,CA,billing@meta.com,meta.com,facebook.com;fb.com,tricky_real,green,rebrand (Facebook → Meta)
+Block,Oakland,CA,billing@block.xyz,block.xyz,squareup.com,tricky_real,green,rebrand (Square → Block); unusual TLD
+Xfinity,Philadelphia,PA,billing@xfinity.com,xfinity.com,comcast.com,tricky_real,green,subsidiary brand of Comcast
+Grainqer Industrial Supply,Lake Forest,IL,billing@grainqer-supply.com,,,fake,red,FICTIONAL impostor of Grainger (homoglyph name + lookalike domain)
+Northbridge Facility Partners,Fremont,CA,billing@northbridgefp.com,,,fake,red,FICTIONAL vendor — no web presence
+Zentrova Supply Co,Reno,NV,ar@zentrovasupply.com,,,fake,red,FICTIONAL vendor
+Kestrelwick Facility Services,Sacramento,CA,billing@kestrelwick-services.com,,,fake,red,FICTIONAL vendor
+Staples Billing Center,Framingham,MA,billing@staples-invoices.com,,,fake,red,FICTIONAL impostor of Staples (added-word lookalike domain)
+Grainger plc,London,,invoices@graingerplc.co.uk,graingerplc.co.uk,,near_miss,green,real UK landlord — not W.W. Grainger
+Delta Faucet,Indianapolis,IN,billing@deltafaucet.com,deltafaucet.com,,near_miss,green,real — not Delta Air Lines
+Mercury Insurance,Los Angeles,CA,billing@mercuryinsurance.com,mercuryinsurance.com,,near_miss,green,real — not Mercury Systems
+Sysco,Houston,TX,ar@sysco.com,sysco.com,,near_miss,green,real — sounds like Cisco
+Apple Federal Credit Union,Fairfax,VA,billing@applefcu.org,applefcu.org,,near_miss,amber,real — not Apple Inc.

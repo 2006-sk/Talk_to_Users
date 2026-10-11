@@ -1,0 +1,78 @@
+{
+  "name": "Company",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "owner_email": {
+      "type": "string"
+    },
+    "approval_threshold": {
+      "type": "number",
+      "default": 5000
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/Los_Angeles"
+    },
+    "notification_email": {
+      "type": "string"
+    },
+    "always_call_on_bank_change": {
+      "type": "boolean",
+      "default": true
+    },
+    "demo_mode": {
+      "type": "boolean",
+      "default": true
+    },
+    "call_simulation": {
+      "type": "boolean",
+      "default": true
+    },
+    "key": {
+      "type": "string",
+      "description": "stable company key used as company_id on every record ('demo' for the public demo company)"
+    },
+    "call_channel": {
+      "type": "string",
+      "enum": [
+        "web",
+        "phone"
+      ],
+      "default": "web",
+      "description": "web = browser call on the PayCrew site; phone = Vapi outbound call"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "description": "A business using PayCrew. All other records carry company_id.",
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.key": "{{user.data.company_id}}"
+        },
+        {
+          "data.key": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": {
+      "$and": [
+        {
+          "data.key": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "data.app_role": "owner"
+          }
+        }
+      ]
+    },
+    "delete": false
+  }
+}

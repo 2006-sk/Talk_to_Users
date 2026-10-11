@@ -1,0 +1,35 @@
+{
+  "name": "BrightDataUsage",
+  "type": "object",
+  "properties": {
+    "day": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "requests": {
+      "type": "number",
+      "default": 0
+    },
+    "ok": {
+      "type": "number",
+      "default": 0
+    },
+    "cache_hits": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "day",
+    "product"
+  ],
+  "description": "Request counters per Bright Data product per day",
+  "rls": {
+    "read": true,
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

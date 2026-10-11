@@ -1,0 +1,10 @@
+import { makeBD } from "./lib.ts";
+import { verifyVendor } from "../base44/shared/verify.ts";
+import { judge, band } from "../base44/shared/core.ts";
+const [name, city, state, sender, phone] = process.argv.slice(2);
+const bd = makeBD();
+const r = await verifyVendor(bd, { name, city, state, sender_domain: sender || null, phone_on_invoice: phone || null });
+const j = judge(r.evidence);
+console.log(JSON.stringify({ official: r.official_domain, conf: r.domain_confidence, name: r.official_name, ms: r.ms, req: r.requests, phone: r.official_phone, status: r.status, judge: j, band: band(j), look: r.lookalike }, null, 1));
+for (const e of r.evidence) console.log(`- [${e.group}] ${e.source_name} · ${e.label}: ${e.value} → ${e.match}${e.flag ? " FLAG " + e.flag : ""}`);
+console.log(JSON.stringify(bd.usage));

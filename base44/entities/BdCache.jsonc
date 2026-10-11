@@ -1,0 +1,26 @@
+{
+  "name": "BdCache",
+  "type": "object",
+  "description": "Bright Data response cache by (product|query, day). Service-role only.",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "day": {
+      "type": "string"
+    },
+    "v": {
+      "type": "string",
+      "description": "JSON payload (trimmed)"
+    }
+  },
+  "required": [
+    "key"
+  ],
+  "rls": {
+    "read": false,
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

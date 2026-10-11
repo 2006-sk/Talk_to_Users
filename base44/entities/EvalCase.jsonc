@@ -1,0 +1,40 @@
+{
+  "name": "EvalCase",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "suite": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "expected": {
+      "type": "object"
+    },
+    "actual": {
+      "type": "object"
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "suite",
+    "case_id"
+  ],
+  "rls": {
+    "read": true,
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

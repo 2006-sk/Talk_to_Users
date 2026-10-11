@@ -1,0 +1,4 @@
+{
+  "name": "inbound",
+  "entry": "entry.ts"
+}

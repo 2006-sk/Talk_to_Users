@@ -1,0 +1,44 @@
+{
+  "name": "Payment",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "invoice_id": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "on_hold",
+        "ready_for_human",
+        "released",
+        "cancelled"
+      ],
+      "default": "on_hold"
+    }
+  },
+  "required": [
+    "invoice_id"
+  ],
+  "description": "Payment READINESS only. PayCrew never executes payments; there is no 'sent' status.",
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "data.company_id": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

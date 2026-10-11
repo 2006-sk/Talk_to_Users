@@ -1,0 +1,65 @@
+{
+  "name": "BdLog",
+  "type": "object",
+  "description": "Bright Data activity log line (per source, per bill)",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "invoice_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "started",
+        "cache_hit",
+        "snapshot",
+        "polling",
+        "completed",
+        "failed",
+        "timeout",
+        "retry"
+      ]
+    },
+    "detail": {
+      "type": "string"
+    },
+    "ms": {
+      "type": "number"
+    },
+    "rows": {
+      "type": "number"
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "invoice_id",
+    "source",
+    "event"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "data.company_id": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

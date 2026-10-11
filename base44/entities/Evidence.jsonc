@@ -1,0 +1,87 @@
+{
+  "name": "Evidence",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "invoice_id": {
+      "type": "string"
+    },
+    "vendor_id": {
+      "type": "string"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "existence",
+        "identity",
+        "age",
+        "reputation",
+        "activity",
+        "risk_news",
+        "price",
+        "ledger",
+        "call"
+      ]
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "expected_value": {
+      "type": "string"
+    },
+    "match": {
+      "type": "string",
+      "enum": [
+        "match",
+        "mismatch",
+        "not_found",
+        "n/a",
+        "pending"
+      ]
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "quote": {
+      "type": "string"
+    },
+    "flag": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string",
+      "description": "Bright Data product used"
+    }
+  },
+  "required": [
+    "invoice_id",
+    "source_name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "data.company_id": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

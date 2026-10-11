@@ -1,0 +1,118 @@
+{
+  "name": "Vendor",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "official_domain": {
+      "type": "string"
+    },
+    "alternate_domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "official_phone": {
+      "type": "string"
+    },
+    "official_phone_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "official_address": {
+      "type": "string"
+    },
+    "known_bank_last4": {
+      "type": "string"
+    },
+    "first_seen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trust_score": {
+      "type": "number"
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "very_low"
+      ]
+    },
+    "band": {
+      "type": "string",
+      "enum": [
+        "green",
+        "amber",
+        "red"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "web_profile": {
+      "type": "object",
+      "description": "Per-source summary from Bright Data: {source: {status, value, url, fetched_at}}"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "under_review",
+        "blocked"
+      ],
+      "default": "active"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "[{at, field, from, to}] e.g. bank details changed"
+    },
+    "open_pos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "avg_amount": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "company_id",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "data.company_id": "demo"
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

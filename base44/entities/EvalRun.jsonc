@@ -1,0 +1,49 @@
+{
+  "name": "EvalRun",
+  "type": "object",
+  "properties": {
+    "suite": {
+      "type": "string",
+      "enum": [
+        "extraction",
+        "web_verify",
+        "lookalike",
+        "e2e",
+        "call",
+        "safety"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "report_url": {
+      "type": "string"
+    },
+    "confusion": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "suite"
+  ],
+  "rls": {
+    "read": true,
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}
